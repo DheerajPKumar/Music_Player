@@ -22,6 +22,8 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
+    border-radius: 10px;
+    box-shadow: 5px 10px 5px 5px rgba(0, 0, 0, 0.7);
 }
 
 .img{
@@ -69,8 +71,6 @@ body{
 .prevBtn{
     margin-top: rem(20px);
     background-color: transparent;
-    // height: rem(30px);
-    // width: rem(30px);
     padding: rem(2px) rem(40px) rem(2px) rem(2px);
     color: gray;
     border: none;

@@ -43,61 +43,103 @@ var musicArr = [
   },
 ];
 
-const musicContainer = document.querySelector('.musicContainer');
+let songIndex = 0;
+let playing = false;
+let audioEl = new Audio(musicArr[songIndex].url);
 
-function createLayout(musicArr){
-    const img = document.createElement('img');
-    const title = document.createElement('h2');
-    const artist = document.createElement('p');
-    const navigation = document.createElement('div');
-    const playBtn = document.createElement('button');
-    const prevBtn = document.createElement('button');
-    const nextBtn = document.createElement('button');
-    const shuffleBtn = document.createElement('button');
-    const repeatBtn = document.createElement('button');
-    const progressContainer = document.createElement('div');
-    const progressBar = document.createElement('div');
-    const progressData = document.createElement('div');
-    const progressStart = document.createElement('p');
-    const progressEnd = document.createElement('p');
+const musicContainer = document.querySelector(".musicContainer");
 
-    img.src = musicArr[0].artwork;
-    img.classList.add('img');
-    title.textContent = musicArr[0].title;
-    title.classList.add('title');
-    artist.textContent = musicArr[0].artist;
-    artist.classList.add('artist');
-    navigation.classList.add('navigation');
-    playBtn.innerHTML = `<i class="fa-solid fa-play"></i>`;
-    playBtn.classList.add('playBtn');
-    prevBtn.innerHTML = `<i class="fa-solid fa-backward"></i>`;
-    prevBtn.classList.add('prevBtn');
-    nextBtn.innerHTML = `<i class="fa-solid fa-forward"></i>`;
-    nextBtn.classList.add('nextBtn');
-    shuffleBtn.innerHTML = `<i class="fa-solid fa-shuffle"></i>`;
-    shuffleBtn.classList.add('shuffleBtn');
-    repeatBtn.innerHTML = `<i class="fa-solid fa-repeat"></i>`;
-    repeatBtn.classList.add('repeatBtn');
-    progressContainer.classList.add('progressContainer');
-    progressBar.classList.add('progressBar');
-    progressData.classList.add('progressData');
-    progressStart.innerText = "1:20";
-    progressEnd.innerText = "3:45";
+function createLayout(musicArr) {
+  const img = document.createElement("img");
+  const title = document.createElement("h2");
+  const artist = document.createElement("p");
+  const navigation = document.createElement("div");
+  const playBtn = document.createElement("button");
+  const prevBtn = document.createElement("button");
+  const nextBtn = document.createElement("button");
+  const shuffleBtn = document.createElement("button");
+  const repeatBtn = document.createElement("button");
+  const progressContainer = document.createElement("div");
+  const progressBar = document.createElement("div");
+  const progressData = document.createElement("div");
+  const progressStart = document.createElement("p");
+  const progressEnd = document.createElement("p");
 
-    musicContainer.appendChild(img);
-    musicContainer.appendChild(title);
-    musicContainer.appendChild(artist);
-    musicContainer.appendChild(progressData);
-    progressContainer.appendChild(progressBar);
-    progressData.appendChild(progressStart);
-    progressData.appendChild(progressEnd);
-    musicContainer.appendChild(progressContainer);
-    navigation.appendChild(shuffleBtn);
-    navigation.appendChild(prevBtn);
-    navigation.appendChild(playBtn);
-    navigation.appendChild(nextBtn);
-    navigation.appendChild(repeatBtn);
-    musicContainer.appendChild(navigation);
+  img.src = musicArr[songIndex].artwork;
+  img.classList.add("img");
+  title.textContent = musicArr[songIndex].title;
+  title.classList.add("title");
+  artist.textContent = musicArr[songIndex].artist;
+  artist.classList.add("artist");
+  navigation.classList.add("navigation");
+  playBtn.innerHTML = `<i class="fa-solid fa-play"></i>`;
+  playBtn.classList.add("playBtn");
+  prevBtn.innerHTML = `<i class="fa-solid fa-backward"></i>`;
+  prevBtn.classList.add("prevBtn");
+  nextBtn.innerHTML = `<i class="fa-solid fa-forward"></i>`;
+  nextBtn.classList.add("nextBtn");
+  shuffleBtn.innerHTML = `<i class="fa-solid fa-shuffle"></i>`;
+  shuffleBtn.classList.add("shuffleBtn");
+  repeatBtn.innerHTML = `<i class="fa-solid fa-repeat"></i>`;
+  repeatBtn.classList.add("repeatBtn");
+  progressContainer.classList.add("progressContainer");
+  progressBar.classList.add("progressBar");
+  progressData.classList.add("progressData");
+  progressStart.innerText = "0:00";
+  progressEnd.innerText = "0:00";
+
+  musicContainer.appendChild(img);
+  musicContainer.appendChild(title);
+  musicContainer.appendChild(artist);
+  musicContainer.appendChild(progressData);
+  progressContainer.appendChild(progressBar);
+  progressData.appendChild(progressStart);
+  progressData.appendChild(progressEnd);
+  musicContainer.appendChild(progressContainer);
+  navigation.appendChild(shuffleBtn);
+  navigation.appendChild(prevBtn);
+  navigation.appendChild(playBtn);
+  navigation.appendChild(nextBtn);
+  navigation.appendChild(repeatBtn);
+  musicContainer.appendChild(navigation);
+
+  playBtn.addEventListener("click", () => {
+    if (playing) {
+      pauseSong();
+    } else {
+      playSong();
+    }
+  });
+}
+
+function playSong() {
+  audioEl.src = musicArr[songIndex].url;
+  let val = audioEl.duration;
+  console.log(val);
+  audioEl.play();
+  playing = true;
+  document.querySelector(
+    ".playBtn"
+  ).innerHTML = `<i class="fa-solid fa-pause"></i>`;
+  updateSongDetails();
+}
+
+function pauseSong() {
+  audioEl.pause();
+  playing = false;
+  document.querySelector(
+    ".playBtn"
+  ).innerHTML = `<i class="fa-solid fa-play"></i>`;
+}
+
+function updateSongDetails() {
+  const img = document.querySelector(".img");
+  const title = document.querySelector(".title");
+  const artist = document.querySelector(".artist");
+
+  img.src = musicArr[songIndex].artwork;
+  title.textContent = musicArr[songIndex].title;
+  artist.textContent = musicArr[songIndex].artist;
 }
 
 createLayout(musicArr);
