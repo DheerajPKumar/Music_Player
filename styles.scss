@@ -1,5 +1,145 @@
-h1{
-    color: aquamarine;
-    background-color: #000;
-    font-size: 30px;
+@import "./components/functions";
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: #8f8b8b;
+}
+
+.musicContainer{
+    width: rem(250px);
+    height: rem(430px);
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.img{
+    margin-top: rem(20px);
+    width: rem(180px);
+    height: rem(180px);
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid rgba(189, 184, 184, 0.5);
+}
+
+.title{
+    margin-top: rem(20px);
+    font-size: rem(30px);
+}
+
+.artist{
+    margin-top: rem(10px);
+    font-size: rem(18px);
+}
+
+.navigation{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.playBtn{
+    margin-top: rem(20px);
+    padding: rem(15px) rem(15px);
+    width: 50px;
+    height: 50px;
+    background-color: #d82413;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: rem(18px);
+    border-radius: 50%;
+    text-align: center;
+    position: absolute;
+    z-index: 10;
+}
+
+.prevBtn{
+    margin-top: rem(20px);
+    background-color: transparent;
+    // height: rem(30px);
+    // width: rem(30px);
+    padding: rem(2px) rem(40px) rem(2px) rem(2px);
+    color: gray;
+    border: none;
+    cursor: pointer;
+    font-size: rem(18px);
+    border-radius: 10px;
+    text-align: center;
+    border: 1px solid gray;
+}
+
+.nextBtn{
+    margin-top: rem(20px);
+    background-color: transparent;
+    padding: rem(2px) rem(2px) rem(2px) rem(40px);
+    color: gray;
+    border: none;
+    cursor: pointer;
+    font-size: rem(18px);
+    border-radius: 10px;
+    border: 1px solid gray;
+}
+
+.shuffleBtn{
+    margin-top: rem(20px);
+    background-color: transparent;
+    padding: rem(2px) rem(10px) rem(2px) rem(10px);
+    color: gray;
+    border: none;
+    cursor: pointer;
+    font-size: rem(18px);
+    border-radius: 10px;
+    border: 1px solid gray;
+    margin-right: rem(10px);
+}
+
+.repeatBtn{
+    margin-top: rem(20px);
+    background-color: transparent;
+    padding: rem(2px) rem(10px) rem(2px) rem(10px);
+    color: gray;
+    border: none;
+    cursor: pointer;
+    font-size: rem(18px);
+    border-radius: 10px;
+    border: 1px solid gray;
+    margin-left: rem(10px);
+}
+
+.progressContainer {
+    width: 90%;
+    background-color: black;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-top: rem(4px);
+    margin-bottom: rem(4px);
+}
+
+.progressBar {
+    width: 0%;
+    height: 5px;
+    width: 20%;
+    background-color: #4caf50;
+    border-radius: 5px;
+}
+
+.progressData{
+    width: 90%;
+    margin-top: rem(40px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }

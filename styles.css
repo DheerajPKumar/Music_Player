@@ -1,5 +1,142 @@
-h1 {
-  color: aquamarine;
-  background-color: #000;
-  font-size: 30px;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: #8f8b8b;
+}
+
+.musicContainer {
+  width: 15.625rem;
+  height: 26.875rem;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.img {
+  margin-top: 1.25rem;
+  width: 11.25rem;
+  height: 11.25rem;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border: 5px solid rgba(189, 184, 184, 0.5);
+}
+
+.title {
+  margin-top: 1.25rem;
+  font-size: 1.875rem;
+}
+
+.artist {
+  margin-top: 0.625rem;
+  font-size: 1.125rem;
+}
+
+.navigation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.playBtn {
+  margin-top: 1.25rem;
+  padding: 0.9375rem 0.9375rem;
+  width: 50px;
+  height: 50px;
+  background-color: #d82413;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 1.125rem;
+  border-radius: 50%;
+  text-align: center;
+  position: absolute;
+  z-index: 10;
+}
+
+.prevBtn {
+  margin-top: 1.25rem;
+  background-color: transparent;
+  padding: 0.125rem 2.5rem 0.125rem 0.125rem;
+  color: gray;
+  border: none;
+  cursor: pointer;
+  font-size: 1.125rem;
+  border-radius: 10px;
+  text-align: center;
+  border: 1px solid gray;
+}
+
+.nextBtn {
+  margin-top: 1.25rem;
+  background-color: transparent;
+  padding: 0.125rem 0.125rem 0.125rem 2.5rem;
+  color: gray;
+  border: none;
+  cursor: pointer;
+  font-size: 1.125rem;
+  border-radius: 10px;
+  border: 1px solid gray;
+}
+
+.shuffleBtn {
+  margin-top: 1.25rem;
+  background-color: transparent;
+  padding: 0.125rem 0.625rem 0.125rem 0.625rem;
+  color: gray;
+  border: none;
+  cursor: pointer;
+  font-size: 1.125rem;
+  border-radius: 10px;
+  border: 1px solid gray;
+  margin-right: 0.625rem;
+}
+
+.repeatBtn {
+  margin-top: 1.25rem;
+  background-color: transparent;
+  padding: 0.125rem 0.625rem 0.125rem 0.625rem;
+  color: gray;
+  border: none;
+  cursor: pointer;
+  font-size: 1.125rem;
+  border-radius: 10px;
+  border: 1px solid gray;
+  margin-left: 0.625rem;
+}
+
+.progressContainer {
+  width: 90%;
+  background-color: black;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
+.progressBar {
+  width: 0%;
+  height: 5px;
+  width: 20%;
+  background-color: #4caf50;
+  border-radius: 5px;
+}
+
+.progressData {
+  width: 90%;
+  margin-top: 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }/*# sourceMappingURL=styles.css.map */
