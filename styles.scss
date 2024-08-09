@@ -1,4 +1,5 @@
 @import "./components/functions";
+@import "./components/colorVars";
 
 *{
     padding: 0;
@@ -12,18 +13,18 @@ body{
     align-items: center;
     width: 100vw;
     height: 100vh;
-    background-color: #8f8b8b;
+    background-color: $bg-color;
 }
 
 .musicContainer{
     width: rem(250px);
     height: rem(430px);
-    background-color: #fff;
+    background-color: $white-color;
     display: flex;
     flex-direction: column;
     align-items: center;
     border-radius: 10px;
-    box-shadow: 8px 8px 5px 2px rgba(0, 0, 0, 0.7);
+    box-shadow: 8px 8px 5px 2px $card-shadow;
     transition: transform 0.3s ease-in-out;
 }
 
@@ -37,7 +38,7 @@ body{
     height: rem(180px);
     border-radius: 50%;
     object-fit: cover;
-    border: 6px solid rgba(0, 0, 0, 0.2);
+    border: 6px solid $image-border;
     transition: transform 0.5s ease-in-out;
 }
 
@@ -53,7 +54,7 @@ body{
 .artist{
     margin-top: rem(5px);
     font-size: rem(16px);
-    color: #535151;
+    color: $artist-color;
 }
 
 .navigation{
@@ -66,10 +67,10 @@ body{
 .playBtn{
     margin-top: rem(20px);
     padding: rem(15px) rem(15px);
-    width: 50px;
-    height: 50px;
-    background-color: #d82413;
-    color: white;
+    width: rem(50px);
+    height: rem(50px);
+    background-color: $primary-color;
+    color: $white-color;
     border: none;
     cursor: pointer;
     font-size: rem(18px);
@@ -83,32 +84,32 @@ body{
     margin-top: rem(20px);
     background-color: transparent;
     padding: rem(2px) rem(40px) rem(2px) rem(15px);
-    color: gray;
+    color: $gray-color;
     border: none;
     cursor: pointer;
     font-size: rem(14px);
     border-radius: 10px;
     text-align: center;
-    border: 1px solid gray;
+    border: 1px solid $gray-color;
 }
 
 .nextBtn{
     margin-top: rem(20px);
     background-color: transparent;
     padding: rem(2px) rem(15px) rem(2px) rem(40px);
-    color: gray;
+    color: $gray-color;
     border: none;
     cursor: pointer;
     font-size: rem(14px);
     border-radius: 10px;
-    border: 1px solid gray;
+    border: 1px solid $gray-color;
 }
 
 .shuffleBtn{
     margin-top: rem(20px);
     background-color: transparent;
     padding: rem(2px) rem(10px) rem(2px) rem(10px);
-    color: gray;
+    color: $gray-color;
     border: none;
     cursor: pointer;
     font-size: rem(18px);
@@ -120,7 +121,7 @@ body{
     margin-top: rem(20px);
     background-color: transparent;
     padding: rem(2px) rem(10px) rem(2px) rem(10px);
-    color: gray;
+    color: $gray-color;
     border: none;
     cursor: pointer;
     font-size: rem(18px);
@@ -130,9 +131,9 @@ body{
 
 .progressContainer {
     width: 90%;
-    background-color: #fff;
-    border: 1px solid gray;
-    border-radius: 5px;
+    background-color: $white-color;
+    border: rem(1px) solid $gray-color;
+    border-radius: rem(5px);
     overflow: hidden;
     margin-top: rem(4px);
     margin-bottom: rem(4px);
@@ -140,9 +141,9 @@ body{
 
 .progressBar {
     width: 0%;
-    height: 5px;
-    background-color: #d82413;
-    border-radius: 5px;
+    height: rem(5px);
+    background-color: $primary-color;
+    border-radius: rem(5px);
 }
 
 .progressData {
@@ -155,8 +156,8 @@ body{
 
 .progressStart,
 .progressEnd {
-    font-size: 14px;
-    color: black; 
+    font-size: rem(14px);
+    color: $black-color; 
 }
 
 .progressStart {
@@ -168,142 +169,5 @@ body{
 }
 
 .active{
-    color: #d82413;
+    color: $primary-color;
 }
-
-
-// @import "./components/functions";
-
-// * {
-//     padding: 0;
-//     margin: 0;
-//     box-sizing: border-box;
-// }
-
-// body {
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     width: 100vw;
-//     height: 100vh;
-//     background-color: #8f8b8b;
-// }
-
-// .musicContainer {
-//     width: rem(250px);
-//     height: rem(430px);
-//     background-color: #fff;
-//     display: flex;
-//     flex-direction: column;
-//     align-items: center;
-//     border-radius: 10px;
-//     box-shadow: 8px 8px 5px 2px rgba(0, 0, 0, 0.7);
-//     transition: transform 0.3s ease-in-out;
-// }
-
-// .musicContainer:hover {
-//     transform: scale(1.05);
-// }
-
-// .img {
-//     margin-top: rem(20px);
-//     width: rem(180px);
-//     height: rem(180px);
-//     border-radius: 50%;
-//     object-fit: cover;
-//     border: 6px solid rgba(0, 0, 0, 0.2);
-//     transition: transform 0.5s ease-in-out;
-// }
-
-// .img:hover {
-//     transform: rotate(360deg);
-// }
-
-// .title {
-//     margin-top: rem(40px);
-//     font-size: rem(30px);
-//     transition: color 0.3s ease;
-// }
-
-// .artist {
-//     margin-top: rem(5px);
-//     font-size: rem(16px);
-//     color: #535151;
-//     transition: color 0.3s ease;
-// }
-
-// .navigation {
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     position: relative;
-// }
-
-// .playBtn,
-// .prevBtn,
-// .nextBtn,
-// .shuffleBtn,
-// .repeatBtn {
-//     margin-top: rem(20px);
-//     padding: rem(15px) rem(15px);
-//     background-color: transparent;
-//     color: gray;
-//     border: none;
-//     cursor: pointer;
-//     font-size: rem(18px);
-//     border-radius: 50%;
-//     transition: background-color 0.3s ease, transform 0.3s ease;
-// }
-
-// .playBtn:hover,
-// .prevBtn:hover,
-// .nextBtn:hover,
-// .shuffleBtn:hover,
-// .repeatBtn:hover {
-//     background-color: #d82413;
-//     color: white;
-//     transform: scale(1.1);
-// }
-
-// .progressContainer {
-//     width: 90%;
-//     background-color: #fff;
-//     border: 1px solid gray;
-//     border-radius: 5px;
-//     overflow: hidden;
-//     margin-top: rem(4px);
-//     margin-bottom: rem(4px);
-// }
-
-// .progressBar {
-//     width: 0%;
-//     height: 5px;
-//     background-color: #d82413;
-//     border-radius: 5px;
-// }
-
-// .progressData {
-//     width: 90%;
-//     margin-top: rem(30px);
-//     display: flex;
-//     justify-content: space-between;
-//     align-items: center;
-// }
-
-// .progressStart,
-// .progressEnd {
-//     font-size: 14px;
-//     color: black; 
-// }
-
-// .progressStart {
-//     margin-right: auto;
-// }
-
-// .progressEnd {
-//     margin-left: auto;
-// }
-
-// .active{
-//     color: #d82413;
-// }

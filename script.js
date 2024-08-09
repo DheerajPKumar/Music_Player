@@ -165,8 +165,7 @@ function update() {
   const progressWidth = (currentTime / duration) * 100;
   document.querySelector(".progressBar").style.width = `${progressWidth}%`;
 
-  document.querySelector(".progressStart").innerText =
-    minsecTimeFormat(currentTime);
+  document.querySelector(".progressStart").innerText = minsecTimeFormat(currentTime);
   document.querySelector(".progressEnd").innerText = minsecTimeFormat(duration);
 }
 
@@ -187,10 +186,12 @@ function pauseSong() {
 function prevSong() {
   if (shuffle == true) {
     shuffleSong();
-  } else {
+  } 
+  else {
     if (songIndex === 0) {
       songIndex = musicArr.length - 1;
-    } else {
+    } 
+    else {
       songIndex--;
     }
     playSong();
@@ -201,10 +202,12 @@ function prevSong() {
 function nextSong() {
   if (shuffle == true) {
     shuffleSong();
-  } else {
+  } 
+  else {
     if (songIndex === musicArr.length - 1) {
       songIndex = 0;
-    } else {
+    } 
+    else {
       songIndex++;
     }
     playSong();
