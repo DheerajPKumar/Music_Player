@@ -45,12 +45,13 @@ var musicArr = [
 
 let songIndex = 0;
 let playing = false;
-let audioEl = new Audio(musicArr[songIndex].url);
+let shuffle = false;
+let audioEl = document.createElement("audio");
 
 const musicContainer = document.querySelector(".musicContainer");
 
-function createLayout(musicArr) {
-  const img = document.createElement("img");
+function createLayout() {
+  const cardImg = document.createElement("img");
   const title = document.createElement("h2");
   const artist = document.createElement("p");
   const navigation = document.createElement("div");
@@ -60,13 +61,13 @@ function createLayout(musicArr) {
   const shuffleBtn = document.createElement("button");
   const repeatBtn = document.createElement("button");
   const progressContainer = document.createElement("div");
-  const progressBar = document.createElement("div");
+  let progressBar = document.createElement("div");
   const progressData = document.createElement("div");
-  const progressStart = document.createElement("p");
-  const progressEnd = document.createElement("p");
+  let progressStart = document.createElement("p");
+  let progressEnd = document.createElement("p");
 
-  img.src = musicArr[songIndex].artwork;
-  img.classList.add("img");
+  cardImg.src = musicArr[songIndex].artwork;
+  cardImg.classList.add("cardImg");
   title.textContent = musicArr[songIndex].title;
   title.classList.add("title");
   artist.textContent = musicArr[songIndex].artist;
@@ -85,10 +86,12 @@ function createLayout(musicArr) {
   progressContainer.classList.add("progressContainer");
   progressBar.classList.add("progressBar");
   progressData.classList.add("progressData");
-  progressStart.innerText = "0:00";
-  progressEnd.innerText = "0:00";
+  progressStart.classList.add("progressStart");
+  progressEnd.classList.add("progressEnd");
+  progressStart.innerText = "";
+  progressEnd.innerText = "";
 
-  musicContainer.appendChild(img);
+  musicContainer.appendChild(cardImg);
   musicContainer.appendChild(title);
   musicContainer.appendChild(artist);
   musicContainer.appendChild(progressData);
@@ -102,6 +105,7 @@ function createLayout(musicArr) {
   navigation.appendChild(nextBtn);
   navigation.appendChild(repeatBtn);
   musicContainer.appendChild(navigation);
+  musicContainer.appendChild(audioEl);
 
   playBtn.addEventListener("click", () => {
     if (playing) {
@@ -110,18 +114,66 @@ function createLayout(musicArr) {
       playSong();
     }
   });
+
+  prevBtn.addEventListener("click", () => {
+    prevSong();
+  });
+
+  nextBtn.addEventListener("click", () => {
+    nextSong();
+  });
+
+  shuffleBtn.addEventListener("click", () => {
+    shuffleMode();
+  });
+
+  repeatBtn.addEventListener("click", () => {
+    repeatSong();
+  });
 }
 
 function playSong() {
-  audioEl.src = musicArr[songIndex].url;
-  let val = audioEl.duration;
-  console.log(val);
+  if (audioEl.src !== musicArr[songIndex].url) {
+    audioEl.src = musicArr[songIndex].url;
+    audioEl.addEventListener("loadedmetadata", () => {
+      update();
+      document.querySelector(".progressEnd").innerText = minsecTimeFormat(
+        audioEl.duration
+      );
+    });
+  }
+
   audioEl.play();
   playing = true;
   document.querySelector(
     ".playBtn"
   ).innerHTML = `<i class="fa-solid fa-pause"></i>`;
-  updateSongDetails();
+
+  setInterval(update, 1000);
+}
+
+function update() {
+  const currentTime = audioEl.currentTime;
+  const duration = audioEl.duration;
+  // console.log("CURRENT TIME: " + currentTime);
+  // console.log("DURATION: " + duration);
+
+  // if(currentTime == duration){
+  //   document.querySelector('.palyBtn').innerHTML = `<i class="fa-solid fa-pause"></i>`;
+  // }
+
+  const progressWidth = (currentTime / duration) * 100;
+  document.querySelector(".progressBar").style.width = `${progressWidth}%`;
+
+  document.querySelector(".progressStart").innerText =
+    minsecTimeFormat(currentTime);
+  document.querySelector(".progressEnd").innerText = minsecTimeFormat(duration);
+}
+
+function minsecTimeFormat(seconds) {
+  const currMin = Math.floor(seconds / 60);
+  const currSec = Math.floor(seconds % 60);
+  return `${currMin}:${currSec < 10 ? "0" : ""}${currSec}`;
 }
 
 function pauseSong() {
@@ -132,14 +184,63 @@ function pauseSong() {
   ).innerHTML = `<i class="fa-solid fa-play"></i>`;
 }
 
-function updateSongDetails() {
-  const img = document.querySelector(".img");
+function prevSong() {
+  if (shuffle == true) {
+    shuffleSong();
+  } else {
+    if (songIndex === 0) {
+      songIndex = musicArr.length - 1;
+    } else {
+      songIndex--;
+    }
+    playSong();
+  }
+  updateDetails();
+}
+
+function nextSong() {
+  if (shuffle == true) {
+    shuffleSong();
+  } else {
+    if (songIndex === musicArr.length - 1) {
+      songIndex = 0;
+    } else {
+      songIndex++;
+    }
+    playSong();
+  }
+  updateDetails();
+}
+
+function shuffleSong() {
+  songIndex = Math.floor(Math.random() * musicArr.length);
+  console.log(songIndex);
+  playSong();
+}
+
+function shuffleMode() {
+  shuffle = !shuffle;
+  document.querySelector(".shuffleBtn").classList.toggle("active", shuffle);
+}
+
+function repeatSong() {
+  if (audioEl.loop == true) {
+    audioEl.loop = false;
+    document.querySelector(".repeatBtn").classList.remove("active");
+  } else {
+    audioEl.loop = true;
+    document.querySelector(".repeatBtn").classList.add("active");
+  }
+}
+
+function updateDetails() {
+  const cardImg = document.querySelector(".cardImg");
   const title = document.querySelector(".title");
   const artist = document.querySelector(".artist");
 
-  img.src = musicArr[songIndex].artwork;
+  cardImg.src = musicArr[songIndex].artwork;
   title.textContent = musicArr[songIndex].title;
   artist.textContent = musicArr[songIndex].artist;
 }
 
-createLayout(musicArr);
+createLayout();

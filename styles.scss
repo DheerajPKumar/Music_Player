@@ -23,26 +23,37 @@ body{
     flex-direction: column;
     align-items: center;
     border-radius: 10px;
-    box-shadow: 5px 10px 5px 5px rgba(0, 0, 0, 0.7);
+    box-shadow: 8px 8px 5px 2px rgba(0, 0, 0, 0.7);
+    transition: transform 0.3s ease-in-out;
 }
 
-.img{
+.musicContainer:hover {
+    transform: scale(1.02);
+}
+
+.cardImg{
     margin-top: rem(20px);
     width: rem(180px);
     height: rem(180px);
     border-radius: 50%;
     object-fit: cover;
-    border: 5px solid rgba(189, 184, 184, 0.5);
+    border: 6px solid rgba(0, 0, 0, 0.2);
+    transition: transform 0.5s ease-in-out;
+}
+
+.cardImg:hover{
+    transform: rotate(360deg);
 }
 
 .title{
-    margin-top: rem(20px);
+    margin-top: rem(40px);
     font-size: rem(30px);
 }
 
 .artist{
-    margin-top: rem(10px);
-    font-size: rem(18px);
+    margin-top: rem(5px);
+    font-size: rem(16px);
+    color: #535151;
 }
 
 .navigation{
@@ -71,11 +82,11 @@ body{
 .prevBtn{
     margin-top: rem(20px);
     background-color: transparent;
-    padding: rem(2px) rem(40px) rem(2px) rem(2px);
+    padding: rem(2px) rem(40px) rem(2px) rem(15px);
     color: gray;
     border: none;
     cursor: pointer;
-    font-size: rem(18px);
+    font-size: rem(14px);
     border-radius: 10px;
     text-align: center;
     border: 1px solid gray;
@@ -84,11 +95,11 @@ body{
 .nextBtn{
     margin-top: rem(20px);
     background-color: transparent;
-    padding: rem(2px) rem(2px) rem(2px) rem(40px);
+    padding: rem(2px) rem(15px) rem(2px) rem(40px);
     color: gray;
     border: none;
     cursor: pointer;
-    font-size: rem(18px);
+    font-size: rem(14px);
     border-radius: 10px;
     border: 1px solid gray;
 }
@@ -102,7 +113,6 @@ body{
     cursor: pointer;
     font-size: rem(18px);
     border-radius: 10px;
-    border: 1px solid gray;
     margin-right: rem(10px);
 }
 
@@ -115,13 +125,13 @@ body{
     cursor: pointer;
     font-size: rem(18px);
     border-radius: 10px;
-    border: 1px solid gray;
     margin-left: rem(10px);
 }
 
 .progressContainer {
     width: 90%;
-    background-color: black;
+    background-color: #fff;
+    border: 1px solid gray;
     border-radius: 5px;
     overflow: hidden;
     margin-top: rem(4px);
@@ -131,15 +141,169 @@ body{
 .progressBar {
     width: 0%;
     height: 5px;
-    width: 20%;
-    background-color: #4caf50;
+    background-color: #d82413;
     border-radius: 5px;
 }
 
-.progressData{
+.progressData {
     width: 90%;
-    margin-top: rem(40px);
+    margin-top: rem(30px);
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
+
+.progressStart,
+.progressEnd {
+    font-size: 14px;
+    color: black; 
+}
+
+.progressStart {
+    margin-right: auto;
+}
+
+.progressEnd {
+    margin-left: auto;
+}
+
+.active{
+    color: #d82413;
+}
+
+
+// @import "./components/functions";
+
+// * {
+//     padding: 0;
+//     margin: 0;
+//     box-sizing: border-box;
+// }
+
+// body {
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     width: 100vw;
+//     height: 100vh;
+//     background-color: #8f8b8b;
+// }
+
+// .musicContainer {
+//     width: rem(250px);
+//     height: rem(430px);
+//     background-color: #fff;
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
+//     border-radius: 10px;
+//     box-shadow: 8px 8px 5px 2px rgba(0, 0, 0, 0.7);
+//     transition: transform 0.3s ease-in-out;
+// }
+
+// .musicContainer:hover {
+//     transform: scale(1.05);
+// }
+
+// .img {
+//     margin-top: rem(20px);
+//     width: rem(180px);
+//     height: rem(180px);
+//     border-radius: 50%;
+//     object-fit: cover;
+//     border: 6px solid rgba(0, 0, 0, 0.2);
+//     transition: transform 0.5s ease-in-out;
+// }
+
+// .img:hover {
+//     transform: rotate(360deg);
+// }
+
+// .title {
+//     margin-top: rem(40px);
+//     font-size: rem(30px);
+//     transition: color 0.3s ease;
+// }
+
+// .artist {
+//     margin-top: rem(5px);
+//     font-size: rem(16px);
+//     color: #535151;
+//     transition: color 0.3s ease;
+// }
+
+// .navigation {
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     position: relative;
+// }
+
+// .playBtn,
+// .prevBtn,
+// .nextBtn,
+// .shuffleBtn,
+// .repeatBtn {
+//     margin-top: rem(20px);
+//     padding: rem(15px) rem(15px);
+//     background-color: transparent;
+//     color: gray;
+//     border: none;
+//     cursor: pointer;
+//     font-size: rem(18px);
+//     border-radius: 50%;
+//     transition: background-color 0.3s ease, transform 0.3s ease;
+// }
+
+// .playBtn:hover,
+// .prevBtn:hover,
+// .nextBtn:hover,
+// .shuffleBtn:hover,
+// .repeatBtn:hover {
+//     background-color: #d82413;
+//     color: white;
+//     transform: scale(1.1);
+// }
+
+// .progressContainer {
+//     width: 90%;
+//     background-color: #fff;
+//     border: 1px solid gray;
+//     border-radius: 5px;
+//     overflow: hidden;
+//     margin-top: rem(4px);
+//     margin-bottom: rem(4px);
+// }
+
+// .progressBar {
+//     width: 0%;
+//     height: 5px;
+//     background-color: #d82413;
+//     border-radius: 5px;
+// }
+
+// .progressData {
+//     width: 90%;
+//     margin-top: rem(30px);
+//     display: flex;
+//     justify-content: space-between;
+//     align-items: center;
+// }
+
+// .progressStart,
+// .progressEnd {
+//     font-size: 14px;
+//     color: black; 
+// }
+
+// .progressStart {
+//     margin-right: auto;
+// }
+
+// .progressEnd {
+//     margin-left: auto;
+// }
+
+// .active{
+//     color: #d82413;
+// }

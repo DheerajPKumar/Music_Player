@@ -21,27 +21,38 @@ body {
   flex-direction: column;
   align-items: center;
   border-radius: 10px;
-  box-shadow: 5px 10px 5px 5px rgba(0, 0, 0, 0.7);
+  box-shadow: 8px 8px 5px 2px rgba(0, 0, 0, 0.7);
+  transition: transform 0.3s ease-in-out;
 }
 
-.img {
+.musicContainer:hover {
+  transform: scale(1.02);
+}
+
+.cardImg {
   margin-top: 1.25rem;
   width: 11.25rem;
   height: 11.25rem;
   border-radius: 50%;
   -o-object-fit: cover;
      object-fit: cover;
-  border: 5px solid rgba(189, 184, 184, 0.5);
+  border: 6px solid rgba(0, 0, 0, 0.2);
+  transition: transform 0.5s ease-in-out;
+}
+
+.cardImg:hover {
+  transform: rotate(360deg);
 }
 
 .title {
-  margin-top: 1.25rem;
+  margin-top: 2.5rem;
   font-size: 1.875rem;
 }
 
 .artist {
-  margin-top: 0.625rem;
-  font-size: 1.125rem;
+  margin-top: 0.3125rem;
+  font-size: 1rem;
+  color: #535151;
 }
 
 .navigation {
@@ -70,11 +81,11 @@ body {
 .prevBtn {
   margin-top: 1.25rem;
   background-color: transparent;
-  padding: 0.125rem 2.5rem 0.125rem 0.125rem;
+  padding: 0.125rem 2.5rem 0.125rem 0.9375rem;
   color: gray;
   border: none;
   cursor: pointer;
-  font-size: 1.125rem;
+  font-size: 0.875rem;
   border-radius: 10px;
   text-align: center;
   border: 1px solid gray;
@@ -83,11 +94,11 @@ body {
 .nextBtn {
   margin-top: 1.25rem;
   background-color: transparent;
-  padding: 0.125rem 0.125rem 0.125rem 2.5rem;
+  padding: 0.125rem 0.9375rem 0.125rem 2.5rem;
   color: gray;
   border: none;
   cursor: pointer;
-  font-size: 1.125rem;
+  font-size: 0.875rem;
   border-radius: 10px;
   border: 1px solid gray;
 }
@@ -101,7 +112,6 @@ body {
   cursor: pointer;
   font-size: 1.125rem;
   border-radius: 10px;
-  border: 1px solid gray;
   margin-right: 0.625rem;
 }
 
@@ -114,13 +124,13 @@ body {
   cursor: pointer;
   font-size: 1.125rem;
   border-radius: 10px;
-  border: 1px solid gray;
   margin-left: 0.625rem;
 }
 
 .progressContainer {
   width: 90%;
-  background-color: black;
+  background-color: #fff;
+  border: 1px solid gray;
   border-radius: 5px;
   overflow: hidden;
   margin-top: 0.25rem;
@@ -130,15 +140,32 @@ body {
 .progressBar {
   width: 0%;
   height: 5px;
-  width: 20%;
-  background-color: #4caf50;
+  background-color: #d82413;
   border-radius: 5px;
 }
 
 .progressData {
   width: 90%;
-  margin-top: 2.5rem;
+  margin-top: 1.875rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.progressStart,
+.progressEnd {
+  font-size: 14px;
+  color: black;
+}
+
+.progressStart {
+  margin-right: auto;
+}
+
+.progressEnd {
+  margin-left: auto;
+}
+
+.active {
+  color: #d82413;
 }/*# sourceMappingURL=styles.css.map */
